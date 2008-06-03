@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>CharBreaker</title>
+</head>
+<body>
+<H2>CharBreaker</H2>
+<p>This program takes a word (or group of words) and works out the coordinates of each letter.</p>
+<H3>Assumptions</H3>
+<p>The program assumes several things about the text you are trying to break down.</p>
+<ul>
+<li>The font is Times New Roman. Your computer should have it installed by default.</li>
+<li>The font size is 20pt.</li>
+<li>The font is centred on a given coordinate, which is adjustable using the x and y offsets.</li>
+<li>You have Microsoft Excel (or similar) to read in the generated comma separated variable (CSV) file.</li>
+<li>Saved CSV files will appear in the same folder as the application itself.</li>
+<li>The program tries not to write over files you have previously created, it will apppend a number to the file you are trying to save, if the default filename file already exists</li>
+</ul>
+
+<H3>User Guide</H3>
+<ol>
+<li>Double click the application.</li>
+<li>Type a word ofr phrase into the text box. There is a maxium of <strong>32</strong> characters allowed.</li>
+<li>Press the <strong>Break</strong> button to </li> see how the program breaks up the word. 
+Under the text box should appear the same word(s) with the following features
+<ul>
+<li>The red box defines the calculated area of the whole word</li>
+<li>The orange lines define the area of each letter (character - even spaces and punctuation have calculated areas</li>
+<li>The green line is the computed centre of the word(s). Letter positions are re-computed from the center of this line.</li>
+</ul></li>
+<li>If you have a study where the screen position of the word(s) has been given, enter it into the offset boxes. 
+The position of each letter will be re-calculated using the given x and y values as representing the centre of the green line.</li>
+<li>Press the <strong>Save as CSV</strong> button to generate the CSV file containing the computed letter positions</li>
+</ol>
+
+<H3>The CSV file</H3>
+<p>The CSV contains the following information:</p>
+<ul>
+<li>The word(s) and their overall width and height.</li>
+<li>The coordinate you gave to be used as the centre of the word.</li>
+<li>For each letter:</li>
+<ol>
+<li>character name</li>
+<li>left edge value</li>
+<li>bottom edge value</li>
+<li>right edge value</li>
+<li>top edge value</li>
+</ol>
+</ul>
+
+<h3>Screenshot</h3>
+<p>Here is a screenshot of the program, the folder it is in together with an example CSV file, and the file opened in Excel.</p>
+<img style="border: 1px black solid;" src="screenshot.png" width="915" height="427" alt="screenshot of app and excel file"/>
+
+<pre>CharBreaker v1.0 - Peter Phillips 03/06/2008</pre>
+</body>
+</html>

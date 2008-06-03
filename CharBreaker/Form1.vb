@@ -225,7 +225,7 @@ Public Class Form1
             stringFont, layoutRect, stringFormat)
 
         Dim chars = Me.TextBox1.Text.ToCharArray()
-        writer.WriteLine("Character,leftEdge,topEdge,rightEdge,bottomEdge")
+        writer.WriteLine("Character,leftEdge,bottomEdge,rightEdge,topEdge")
         For i = 0 To stringRegions.Length - 1
             Dim measureRect_k As RectangleF = stringRegions(i).GetBounds(e.Graphics)
             Dim roundedRect As Rectangle = Rectangle.Round(measureRect_k)
@@ -233,11 +233,11 @@ Public Class Form1
             'Debug.WriteLine(chars(i) & " " & roundedRect.Width & ":" & roundedRect.Height)
             Dim left_edge = (roundedRect.X) - centerx
             Dim right_edge = (roundedRect.X + roundedRect.Width) - centerx
-            Dim top_edge = (roundedRect.Y) - centery
-            Dim bottom_edge = (roundedRect.Y + roundedRect.Height) - centery
+            Dim bottom_edge = (roundedRect.Y) - centery
+            Dim top_edge = (roundedRect.Y + roundedRect.Height) - centery
             writer.WriteLine(chars(i) & "," & _
-                xoffset.Value + left_edge & "," & yoffset.Value + top_edge & "," & _
-                xoffset.Value + right_edge & "," & yoffset.Value + bottom_edge)
+                xoffset.Value + left_edge & "," & yoffset.Value + bottom_edge & "," & _
+                xoffset.Value + right_edge & "," & yoffset.Value + top_edge)
         Next
 
         ' draw the frame and the center
