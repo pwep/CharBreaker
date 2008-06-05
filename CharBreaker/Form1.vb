@@ -37,27 +37,37 @@ Public Class Form1
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents yoffset As System.Windows.Forms.NumericUpDown
     Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents MainMenu1 As System.Windows.Forms.MainMenu
+    Friend WithEvents MenuItem1 As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem2 As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
+    Friend WithEvents FontDialog1 As System.Windows.Forms.FontDialog
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.TextBox1 = New System.Windows.Forms.TextBox
         Me.Button1 = New System.Windows.Forms.Button
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.xoffset = New System.Windows.Forms.NumericUpDown
-        Me.XOffsetLabel = New System.Windows.Forms.Label
+        Me.Button2 = New System.Windows.Forms.Button
         Me.Label1 = New System.Windows.Forms.Label
         Me.yoffset = New System.Windows.Forms.NumericUpDown
-        Me.Button2 = New System.Windows.Forms.Button
+        Me.XOffsetLabel = New System.Windows.Forms.Label
+        Me.xoffset = New System.Windows.Forms.NumericUpDown
+        Me.MainMenu1 = New System.Windows.Forms.MainMenu
+        Me.MenuItem1 = New System.Windows.Forms.MenuItem
+        Me.MenuItem2 = New System.Windows.Forms.MenuItem
+        Me.MenuItem3 = New System.Windows.Forms.MenuItem
+        Me.FontDialog1 = New System.Windows.Forms.FontDialog
         Me.GroupBox1.SuspendLayout()
-        CType(Me.xoffset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.yoffset, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.xoffset, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextBox1
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(16, 16)
         Me.TextBox1.MaxLength = 32
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(312, 39)
+        Me.TextBox1.Size = New System.Drawing.Size(312, 29)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = "the quick brown fox"
         '
@@ -83,21 +93,13 @@ Public Class Form1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Offset"
         '
-        'xoffset
+        'Button2
         '
-        Me.xoffset.Location = New System.Drawing.Point(72, 23)
-        Me.xoffset.Maximum = New Decimal(New Integer() {1600, 0, 0, 0})
-        Me.xoffset.Name = "xoffset"
-        Me.xoffset.Size = New System.Drawing.Size(56, 20)
-        Me.xoffset.TabIndex = 2
-        '
-        'XOffsetLabel
-        '
-        Me.XOffsetLabel.Location = New System.Drawing.Point(16, 24)
-        Me.XOffsetLabel.Name = "XOffsetLabel"
-        Me.XOffsetLabel.Size = New System.Drawing.Size(48, 16)
-        Me.XOffsetLabel.TabIndex = 3
-        Me.XOffsetLabel.Text = "X Offset"
+        Me.Button2.Location = New System.Drawing.Point(280, 22)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(82, 23)
+        Me.Button2.TabIndex = 6
+        Me.Button2.Text = "Save as CSV"
         '
         'Label1
         '
@@ -115,13 +117,41 @@ Public Class Form1
         Me.yoffset.Size = New System.Drawing.Size(56, 20)
         Me.yoffset.TabIndex = 4
         '
-        'Button2
+        'XOffsetLabel
         '
-        Me.Button2.Location = New System.Drawing.Point(280, 22)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(82, 23)
-        Me.Button2.TabIndex = 6
-        Me.Button2.Text = "Save as CSV"
+        Me.XOffsetLabel.Location = New System.Drawing.Point(16, 24)
+        Me.XOffsetLabel.Name = "XOffsetLabel"
+        Me.XOffsetLabel.Size = New System.Drawing.Size(48, 16)
+        Me.XOffsetLabel.TabIndex = 3
+        Me.XOffsetLabel.Text = "X Offset"
+        '
+        'xoffset
+        '
+        Me.xoffset.Location = New System.Drawing.Point(72, 23)
+        Me.xoffset.Maximum = New Decimal(New Integer() {1600, 0, 0, 0})
+        Me.xoffset.Name = "xoffset"
+        Me.xoffset.Size = New System.Drawing.Size(56, 20)
+        Me.xoffset.TabIndex = 2
+        '
+        'MainMenu1
+        '
+        Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem1, Me.MenuItem2})
+        '
+        'MenuItem1
+        '
+        Me.MenuItem1.Index = 0
+        Me.MenuItem1.Text = "File"
+        '
+        'MenuItem2
+        '
+        Me.MenuItem2.Index = 1
+        Me.MenuItem2.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem3})
+        Me.MenuItem2.Text = "Edit"
+        '
+        'MenuItem3
+        '
+        Me.MenuItem3.Index = 0
+        Me.MenuItem3.Text = "Font..."
         '
         'Form1
         '
@@ -130,11 +160,12 @@ Public Class Form1
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
+        Me.Menu = Me.MainMenu1
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.GroupBox1.ResumeLayout(False)
-        CType(Me.xoffset, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.yoffset, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.xoffset, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -175,7 +206,7 @@ Public Class Form1
 
         ' Set up string.
         Dim measureString As String = Me.TextBox1.Text
-        Dim stringFont As New Font("Times New Roman", 20.0F)
+        Dim stringFont As New Font("Times New Roman", 14.0F)
 
         ' Set character ranges to "First" and "Second".
         Dim characterRanges(Me.TextBox1.Text.Length - 1) As CharacterRange
@@ -320,5 +351,11 @@ Public Class Form1
             csvwriter = mywrite
             MyBase.Invalidate()
         End If
+    End Sub
+
+    Private Sub MenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem3.Click
+        Me.FontDialog1.ShowDialog()
+        'MessageBox.Show("")
+        'Dim i = 0
     End Sub
 End Class
