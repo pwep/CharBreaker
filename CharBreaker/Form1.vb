@@ -30,7 +30,6 @@ Public Class Form1
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents xoffset As System.Windows.Forms.NumericUpDown
     Friend WithEvents XOffsetLabel As System.Windows.Forms.Label
@@ -42,9 +41,9 @@ Public Class Form1
     Friend WithEvents MenuItem2 As System.Windows.Forms.MenuItem
     Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
     Friend WithEvents FontDialog1 As System.Windows.Forms.FontDialog
+    Friend WithEvents QuitMenuItem As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.TextBox1 = New System.Windows.Forms.TextBox
-        Me.Button1 = New System.Windows.Forms.Button
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.Button2 = New System.Windows.Forms.Button
         Me.Label1 = New System.Windows.Forms.Label
@@ -53,6 +52,7 @@ Public Class Form1
         Me.xoffset = New System.Windows.Forms.NumericUpDown
         Me.MainMenu1 = New System.Windows.Forms.MainMenu
         Me.MenuItem1 = New System.Windows.Forms.MenuItem
+        Me.QuitMenuItem = New System.Windows.Forms.MenuItem
         Me.MenuItem2 = New System.Windows.Forms.MenuItem
         Me.MenuItem3 = New System.Windows.Forms.MenuItem
         Me.FontDialog1 = New System.Windows.Forms.FontDialog
@@ -63,39 +63,35 @@ Public Class Form1
         '
         'TextBox1
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(16, 16)
+        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox1.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(8, 8)
         Me.TextBox1.MaxLength = 32
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(312, 29)
+        Me.TextBox1.Size = New System.Drawing.Size(376, 39)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = "the quick brown fox"
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(344, 24)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(56, 24)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Break"
-        '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.Button2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.yoffset)
         Me.GroupBox1.Controls.Add(Me.XOffsetLabel)
         Me.GroupBox1.Controls.Add(Me.xoffset)
-        Me.GroupBox1.Location = New System.Drawing.Point(16, 104)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 96)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(384, 56)
+        Me.GroupBox1.Size = New System.Drawing.Size(376, 56)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Offset"
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(280, 22)
+        Me.Button2.Location = New System.Drawing.Point(273, 21)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(82, 23)
         Me.Button2.TabIndex = 6
@@ -140,7 +136,13 @@ Public Class Form1
         'MenuItem1
         '
         Me.MenuItem1.Index = 0
+        Me.MenuItem1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.QuitMenuItem})
         Me.MenuItem1.Text = "File"
+        '
+        'QuitMenuItem
+        '
+        Me.QuitMenuItem.Index = 0
+        Me.QuitMenuItem.Text = "Quit"
         '
         'MenuItem2
         '
@@ -156,9 +158,8 @@ Public Class Form1
         'Form1
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(416, 174)
+        Me.ClientSize = New System.Drawing.Size(392, 161)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Menu = Me.MainMenu1
         Me.Name = "Form1"
@@ -175,7 +176,6 @@ Public Class Form1
     Dim g As Graphics
     Dim myFont As New Font("Times New Roman", 20)
     Dim StringSize As New SizeF
-    Dim calc_text As Boolean = False
     Dim xpos = 15
     Dim ypos = 64
     Dim csvwriter As IO.TextWriter
@@ -183,11 +183,9 @@ Public Class Form1
     Private Sub Form1_Paint(ByVal sender As Object, _
         ByVal e As System.Windows.Forms.PaintEventArgs) Handles MyBase.Paint
         g = e.Graphics
-        If calc_text Then
-            ' CalculateTextSize()
-            If Me.TextBox1.Text.Length > 0 Then
-                MeasureCharacterRangesRegions(e)
-            End If
+        ' CalculateTextSize()
+        If Me.TextBox1.Text.Length > 0 Then
+            MeasureCharacterRangesRegions(e)
         End If
     End Sub
 
@@ -206,7 +204,8 @@ Public Class Form1
 
         ' Set up string.
         Dim measureString As String = Me.TextBox1.Text
-        Dim stringFont As New Font("Times New Roman", 14.0F)
+        ' get font from textbox
+        Dim stringFont As Font = TextBox1.Font
 
         ' Set character ranges to "First" and "Second".
         Dim characterRanges(Me.TextBox1.Text.Length - 1) As CharacterRange
@@ -215,11 +214,15 @@ Public Class Form1
             characterRanges(i) = New CharacterRange(i, 1)
         Next
 
+        xpos = TextBox1.Location.X - 3
+        ypos = TextBox1.Location.Y + TextBox1.Height + 10
         ' Create rectangle for layout.
+
         Dim x As Single = xpos
         Dim y As Single = ypos
-        Dim width As Single = 800.0F
-        Dim height As Single = 50.0F
+
+        Dim width As Single = 2000.0F
+        Dim height As Single = 500.0F
         Dim layoutRect As New RectangleF(x, y, width, height)
 
         ' Set string format.
@@ -273,9 +276,15 @@ Public Class Form1
 
         ' draw the frame and the center
         e.Graphics.DrawRectangle(Pens.Red, roundedRect_whole)
+        ' vertical center line
         e.Graphics.DrawLine(Pens.Green, _
-            centerx, ypos - 4, _
-            centerx, ypos + roundedRect_whole.Height + 4 _
+            centerx, roundedRect_whole.Y - 2, _
+            centerx, roundedRect_whole.Y + roundedRect_whole.Height + 2 _
+        )
+        ' horizontal center line 
+        e.Graphics.DrawLine(Pens.Green, _
+            centerx - 2, centery, _
+            centerx + 2, centery _
         )
 
         writer.Flush()
@@ -318,16 +327,6 @@ Public Class Form1
         Next
         Debug.WriteLine(running_total)
 
-        calc_text = False
-    End Sub
-
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        If g Is Nothing Then
-            ' nothing
-        Else
-            calc_text = True
-            MyBase.Invalidate()
-        End If
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
@@ -354,8 +353,20 @@ Public Class Form1
     End Sub
 
     Private Sub MenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem3.Click
-        Me.FontDialog1.ShowDialog()
-        'MessageBox.Show("")
-        'Dim i = 0
+        FontDialog1.Font = TextBox1.Font
+        If FontDialog1.ShowDialog() = DialogResult.OK Then
+            Debug.WriteLine(FontDialog1.Font)
+            Debug.WriteLine(FontDialog1.Color)
+            Me.TextBox1.Font = FontDialog1.Font
+            MyBase.Invalidate()
+        End If
+    End Sub
+
+    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+        MyBase.Invalidate()
+    End Sub
+
+    Private Sub MenuItem4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QuitMenuItem.Click
+        Application.Exit()
     End Sub
 End Class
