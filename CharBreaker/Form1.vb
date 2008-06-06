@@ -571,7 +571,8 @@ Public Class Form1
                         Threading.Thread.Sleep(200)
                         Dim output As String = line
                         If hitIndex > -1 Then
-                            output = output & vbTab & hitIndex & vbTab & word.Substring(hitIndex, 1)
+                            ' remember to add 1 to the hitIndex !!
+                            output = output & vbTab & hitIndex + 1 & vbTab & word.Substring(hitIndex, 1)
                         Else
                             output = output & vbTab & "" & vbTab & ""
                         End If

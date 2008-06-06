@@ -4,13 +4,16 @@
 </head>
 <body>
 <H2>CharBreaker</H2>
-<p>This program takes a word (or group of words) and works out the coordinates of each letter.</p>
+<p>This program takes a word (or group of words) and calculates on which letter a coordinate (usually a saccade landing point) falls on.</p>
+<p>Download <a href="charbreaker_v1_1.zip">version 1.1 of CharBreaker</a>
+</p>
 <H3>Assumptions</H3>
 <p>The program assumes several things about the text you are trying to break down.</p>
 <ul>
-<li>The font is centred on a given coordinate, which is adjustable using the x and y offsets.</li>
-<li>You have Microsoft Excel (or similar) to read in the generated comma separated variable (CSV) file.</li>
+<li>The word is centred on a given coordinate, which is adjustable using the x and y offsets.</li>
+<li>You have Microsoft Excel (or similar) to read in the generated comma separated variable (CSV) file, or the modified tab separated saccade report.</li>
 <li>Saved CSV files will appear in the same folder as the application itself.</li>
+<li>Processed saccade reports will appear in the same folder as the original saccade report.</li>
 <li>The program tries not to write over files you have previously created, it will apppend a number to the file you are trying to save, if the default filename file already exists</li>
 </ul>
 
@@ -25,14 +28,31 @@
 <li>The red box defines the calculated area of the whole word</li>
 <li>The orange lines define the area of each letter (character - even spaces and punctuation have calculated areas</li>
 <li>The green line is the computed centre of the word(s). Letter positions are re-computed from the center of this line.</li>
+<li>The white circle represents the saccade landing point, if it falls within the area of the word(s)</li>
 </ul></li>
 <li>If you have a study where the screen position of the word(s) has been given, enter it into the offset boxes. 
 The position of each letter will be re-calculated using the given x and y values as representing the centre of the green line.</li>
-<li>Press the <strong>Save as CSV</strong> button to generate the CSV file containing the computed letter positions</li>
+<li>If you have a saccade landing point, enter the x and y values into the saccade boxes.</li>
 </ol>
 
-<H3>The CSV file</H3>
-<p>The CSV contains the following information:</p>
+<h4>Processing a saccade report</h4>
+<p>To process a saccade report file (a list of words, their centre coordinates and the saccade landing coordinates) and calculate with letter was hit, you need to generate a saccade report with the following variables:</p>
+<ul>
+<li><strong>CURRENT_SAC_END_X</strong> - the X coordinate of the saccade landing point</li>
+<li><strong>CURRENT_SAC_END_Y</strong> - the X coordinate of the saccade landing point</li>
+<li><strong>words</strong> - the word that was displayed</li>
+<li><strong>target_loc</strong> - the coordinate of the centre of the word. Here is a valid example: <strong>(292, 380)</strong></li>
+</ul>The four variables can appear in any order in the report.</li>
+<ul>
+<li>Make sure you have picked the correct font and font size.</li>
+<li>Pick a file to process using the File->Process... menu item.</li>
+<li>The program will cycle through each word in the file calculate the letter that has been hit.</li>
+<li>The status bar at the bottom of the window will read "processing" while the calculations are being done. It will change to "Ready" once the file has been completely read.</li>
+<li>A new tab separated file will have been created that has the letter and leter number appended to each result line.</li>
+</ul>
+
+<H4>The CSV file</H4>
+<p>A CSV file can be generated about the current text from the File->Dump CSV menu. The CSV contains the following information:</p>
 <ul>
 <li>The word(s) and their overall width and height.</li>
 <li>The coordinate you gave to be used as the centre of the word.</li>
@@ -47,14 +67,17 @@ The position of each letter will be re-calculated using the given x and y values
 </ul>
 
 <h3>Screenshot</h3>
-<p>Here is a screenshot of the program, the folder it is in together with an example CSV file, and the file opened in Excel.</p>
-<img style="border: 1px black solid;" src="screenshot.png" width="915" height="427" alt="screenshot of app and excel file"/>
+
+<p>Here is a screenshot of the program processing a saccade report.</p>
+<img style="border: 1px black solid;" src="screenshot.png" width="399" height="253" alt="screenshot of app in processing mode"/>
+
 
 <h3>To Do</h3>
 <ul>
-<li>Potentially read in a tab separated text file with saccade landing point in.</li>
+<li>Catch more file errors - for example if the file to process is already being read in Excel.</li>
+<li>Specify the headers to read from the report.</li>
 </ul>
 
-<pre>CharBreaker v1.01 - Peter Phillips 05/06/2008</pre>
+<pre>CharBreaker v1.1 - Peter Phillips 06/06/2008</pre>
 </body>
 </html>
