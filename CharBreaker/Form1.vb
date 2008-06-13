@@ -117,7 +117,8 @@ Public Class Form1
         'yoffset
         '
         Me.yoffset.Location = New System.Drawing.Point(121, 24)
-        Me.yoffset.Maximum = New Decimal(New Integer() {1200, 0, 0, 0})
+        Me.yoffset.Maximum = New Decimal(New Integer() {1316134912, 2328, 0, 0})
+        Me.yoffset.Minimum = New Decimal(New Integer() {1316134912, 2328, 0, -2147483648})
         Me.yoffset.Name = "yoffset"
         Me.yoffset.Size = New System.Drawing.Size(56, 20)
         Me.yoffset.TabIndex = 4
@@ -133,7 +134,8 @@ Public Class Form1
         'xoffset
         '
         Me.xoffset.Location = New System.Drawing.Point(25, 23)
-        Me.xoffset.Maximum = New Decimal(New Integer() {1600, 0, 0, 0})
+        Me.xoffset.Maximum = New Decimal(New Integer() {1316134912, 2328, 0, 0})
+        Me.xoffset.Minimum = New Decimal(New Integer() {1316134912, 2328, 0, -2147483648})
         Me.xoffset.Name = "xoffset"
         Me.xoffset.Size = New System.Drawing.Size(56, 20)
         Me.xoffset.TabIndex = 2
@@ -203,7 +205,8 @@ Public Class Form1
         'ySaccadeNumericUpDown
         '
         Me.ySaccadeNumericUpDown.Location = New System.Drawing.Point(121, 24)
-        Me.ySaccadeNumericUpDown.Maximum = New Decimal(New Integer() {1200, 0, 0, 0})
+        Me.ySaccadeNumericUpDown.Maximum = New Decimal(New Integer() {1316134912, 2328, 0, 0})
+        Me.ySaccadeNumericUpDown.Minimum = New Decimal(New Integer() {1316134912, 2328, 0, -2147483648})
         Me.ySaccadeNumericUpDown.Name = "ySaccadeNumericUpDown"
         Me.ySaccadeNumericUpDown.Size = New System.Drawing.Size(56, 20)
         Me.ySaccadeNumericUpDown.TabIndex = 4
@@ -219,7 +222,8 @@ Public Class Form1
         'xSaccadeNumericUpDown
         '
         Me.xSaccadeNumericUpDown.Location = New System.Drawing.Point(25, 23)
-        Me.xSaccadeNumericUpDown.Maximum = New Decimal(New Integer() {1600, 0, 0, 0})
+        Me.xSaccadeNumericUpDown.Maximum = New Decimal(New Integer() {1316134912, 2328, 0, 0})
+        Me.xSaccadeNumericUpDown.Minimum = New Decimal(New Integer() {1316134912, 2328, 0, -2147483648})
         Me.xSaccadeNumericUpDown.Name = "xSaccadeNumericUpDown"
         Me.xSaccadeNumericUpDown.Size = New System.Drawing.Size(56, 20)
         Me.xSaccadeNumericUpDown.TabIndex = 2
