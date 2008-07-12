@@ -50,6 +50,9 @@ Public Class Form1
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents xSaccadeNumericUpDown As System.Windows.Forms.NumericUpDown
     Friend WithEvents StatusBar1 As System.Windows.Forms.StatusBar
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents PaddingNumeric As System.Windows.Forms.NumericUpDown
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.TextBox1 = New System.Windows.Forms.TextBox
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
@@ -72,12 +75,17 @@ Public Class Form1
         Me.Label3 = New System.Windows.Forms.Label
         Me.xSaccadeNumericUpDown = New System.Windows.Forms.NumericUpDown
         Me.StatusBar1 = New System.Windows.Forms.StatusBar
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox
+        Me.PaddingNumeric = New System.Windows.Forms.NumericUpDown
+        Me.Label4 = New System.Windows.Forms.Label
         Me.GroupBox1.SuspendLayout()
         CType(Me.yoffset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.xoffset, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         CType(Me.ySaccadeNumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.xSaccadeNumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.PaddingNumeric, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -88,7 +96,7 @@ Public Class Form1
         Me.TextBox1.Location = New System.Drawing.Point(8, 8)
         Me.TextBox1.MaxLength = 32
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(376, 39)
+        Me.TextBox1.Size = New System.Drawing.Size(464, 39)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = "the quick brown fox"
         '
@@ -99,37 +107,39 @@ Public Class Form1
         Me.GroupBox1.Controls.Add(Me.yoffset)
         Me.GroupBox1.Controls.Add(Me.XOffsetLabel)
         Me.GroupBox1.Controls.Add(Me.xoffset)
-        Me.GroupBox1.Location = New System.Drawing.Point(8, 120)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 152)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(184, 56)
+        Me.GroupBox1.Size = New System.Drawing.Size(168, 56)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Word Offset"
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(97, 25)
+        Me.Label1.Location = New System.Drawing.Point(80, 25)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(16, 16)
+        Me.Label1.Size = New System.Drawing.Size(15, 16)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Y"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'yoffset
         '
-        Me.yoffset.Location = New System.Drawing.Point(121, 24)
+        Me.yoffset.Location = New System.Drawing.Point(104, 24)
         Me.yoffset.Maximum = New Decimal(New Integer() {1316134912, 2328, 0, 0})
         Me.yoffset.Minimum = New Decimal(New Integer() {1316134912, 2328, 0, -2147483648})
         Me.yoffset.Name = "yoffset"
-        Me.yoffset.Size = New System.Drawing.Size(56, 20)
+        Me.yoffset.Size = New System.Drawing.Size(55, 20)
         Me.yoffset.TabIndex = 4
         '
         'XOffsetLabel
         '
-        Me.XOffsetLabel.Location = New System.Drawing.Point(9, 24)
+        Me.XOffsetLabel.Location = New System.Drawing.Point(8, 24)
         Me.XOffsetLabel.Name = "XOffsetLabel"
-        Me.XOffsetLabel.Size = New System.Drawing.Size(15, 16)
+        Me.XOffsetLabel.Size = New System.Drawing.Size(11, 16)
         Me.XOffsetLabel.TabIndex = 3
         Me.XOffsetLabel.Text = "X"
+        Me.XOffsetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'xoffset
         '
@@ -182,29 +192,30 @@ Public Class Form1
         '
         'GroupBox2
         '
-        Me.GroupBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.ySaccadeNumericUpDown)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.xSaccadeNumericUpDown)
-        Me.GroupBox2.Location = New System.Drawing.Point(200, 120)
+        Me.GroupBox2.Location = New System.Drawing.Point(184, 152)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(184, 56)
+        Me.GroupBox2.Size = New System.Drawing.Size(168, 56)
         Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Saccade Landing"
         '
         'Label2
         '
-        Me.Label2.Location = New System.Drawing.Point(97, 25)
+        Me.Label2.Location = New System.Drawing.Point(80, 25)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(16, 16)
+        Me.Label2.Size = New System.Drawing.Size(15, 16)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Y"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'ySaccadeNumericUpDown
         '
-        Me.ySaccadeNumericUpDown.Location = New System.Drawing.Point(121, 24)
+        Me.ySaccadeNumericUpDown.Location = New System.Drawing.Point(104, 24)
         Me.ySaccadeNumericUpDown.Maximum = New Decimal(New Integer() {1316134912, 2328, 0, 0})
         Me.ySaccadeNumericUpDown.Minimum = New Decimal(New Integer() {1316134912, 2328, 0, -2147483648})
         Me.ySaccadeNumericUpDown.Name = "ySaccadeNumericUpDown"
@@ -213,11 +224,12 @@ Public Class Form1
         '
         'Label3
         '
-        Me.Label3.Location = New System.Drawing.Point(9, 24)
+        Me.Label3.Location = New System.Drawing.Point(11, 24)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(15, 16)
+        Me.Label3.Size = New System.Drawing.Size(11, 16)
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "X"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'xSaccadeNumericUpDown
         '
@@ -230,29 +242,60 @@ Public Class Form1
         '
         'StatusBar1
         '
-        Me.StatusBar1.Location = New System.Drawing.Point(0, 179)
+        Me.StatusBar1.Location = New System.Drawing.Point(0, 211)
         Me.StatusBar1.Name = "StatusBar1"
-        Me.StatusBar1.Size = New System.Drawing.Size(392, 22)
+        Me.StatusBar1.Size = New System.Drawing.Size(480, 22)
         Me.StatusBar1.TabIndex = 7
         Me.StatusBar1.Text = "Ready"
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox3.Controls.Add(Me.PaddingNumeric)
+        Me.GroupBox3.Controls.Add(Me.Label4)
+        Me.GroupBox3.Location = New System.Drawing.Point(360, 152)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(112, 56)
+        Me.GroupBox3.TabIndex = 8
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Padding"
+        '
+        'PaddingNumeric
+        '
+        Me.PaddingNumeric.Location = New System.Drawing.Point(50, 24)
+        Me.PaddingNumeric.Name = "PaddingNumeric"
+        Me.PaddingNumeric.Size = New System.Drawing.Size(56, 20)
+        Me.PaddingNumeric.TabIndex = 1
+        '
+        'Label4
+        '
+        Me.Label4.Location = New System.Drawing.Point(7, 25)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(41, 16)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "Height:"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Form1
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(392, 201)
+        Me.ClientSize = New System.Drawing.Size(480, 233)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.StatusBar1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Menu = Me.MainMenu1
         Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Text = "CharBreaker"
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.yoffset, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.xoffset, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         CType(Me.ySaccadeNumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.xSaccadeNumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        CType(Me.PaddingNumeric, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -315,7 +358,7 @@ Public Class Form1
         Next
 
         xpos = TextBox1.Location.X - 3
-        ypos = TextBox1.Location.Y + TextBox1.Height + 10
+        ypos = TextBox1.Location.Y + TextBox1.Height + 32
         ' Create rectangle for layout.
 
         Dim x As Single = xpos
@@ -369,6 +412,10 @@ Public Class Form1
         writeToFile("Character,leftEdge,bottomEdge,rightEdge,topEdge")
         For i = 0 To stringRegions.Length - 1
             Dim measureRect_k As RectangleF = stringRegions(i).GetBounds(e.Graphics)
+
+            ' add the padding
+            measureRect_k.Height = measureRect_k.Height + (2 * PaddingNumeric.Value)
+            measureRect_k.Y = measureRect_k.Y - (PaddingNumeric.Value)
             Dim roundedRect As Rectangle = Rectangle.Round(measureRect_k)
             e.Graphics.DrawRectangle(Pens.Orange, roundedRect)
 
@@ -657,4 +704,7 @@ Public Class Form1
         Return final_filename
     End Function
 
+    Private Sub PaddingNumeric_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PaddingNumeric.ValueChanged
+        MyBase.Invalidate()
+    End Sub
 End Class
